@@ -191,7 +191,7 @@ function TrauHubLib:CreateUI(config)
     logoIcon.Position = UDim2.new(0.5, 0, 0.5, 0)
     logoIcon.Size = UDim2.new(0.7, 0, 0.7, 0)
     logoIcon.BackgroundTransparency = 1
-    logoIcon.Image = "rbxassetid://104202858258775"
+    logoIcon.Image = "rbxassetid://130160749337944"
     logoIcon.ImageColor3 = Color3.new(1, 1, 1)
     logoIcon.Parent = logoContainer
     
