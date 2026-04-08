@@ -108,7 +108,7 @@ function TrauHubLib:CreateUI(config)
     glow.Position = UDim2.new(0.5, 0, 0.5, 0)
     glow.Size = UDim2.new(1, 60, 1, 60)
     glow.BackgroundTransparency = 1
-    glow.Image = "rbxassetid://130160749337944"
+    glow.Image = "rbxassetid://96220014754961"
     glow.ImageColor3 = self.Colors.Blue1
     glow.ImageTransparency = 0.7
     glow.ScaleType = Enum.ScaleType.Slice
@@ -183,7 +183,7 @@ function TrauHubLib:CreateUI(config)
     logoIcon.Position = UDim2.new(0.5, 0, 0.5, 0)
     logoIcon.Size = UDim2.new(0.7, 0, 0.7, 0)
     logoIcon.BackgroundTransparency = 1
-    logoIcon.Image = "rbxassetid://130160749337944"
+    logoIcon.Image = "rbxassetid://96220014754961"
     logoIcon.ImageColor3 = Color3.new(1, 1, 1)
     logoIcon.Parent = logoContainer
     
@@ -247,7 +247,7 @@ function TrauHubLib:CreateUI(config)
     inputIcon.Position = UDim2.new(0, 15, 0.5, -10)
     inputIcon.Size = UDim2.new(0, 20, 0, 20)
     inputIcon.BackgroundTransparency = 1
-    inputIcon.Image = "rbxassetid://130160749337944"
+    inputIcon.Image = "rbxassetid://96220014754961"
     inputIcon.ImageColor3 = self.Colors.Blue2
     inputIcon.Parent = inputContainer
     
