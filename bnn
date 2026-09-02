@@ -242,6 +242,12 @@ btnHide.MouseButton1Click:Connect(function()
 	Library.ToggleUI()
 end)
 
+uis.InputBegan:Connect(function(input)
+	if not uis:GetFocusedTextBox() and (input.KeyCode == Enum.KeyCode.LeftControl or input.KeyCode == Enum.KeyCode.RightControl) then
+		Library.ToggleUI()
+	end
+end)
+
 local NotiContainer = Instance.new("Frame")
 local NotiList = Instance.new("UIListLayout")
 
