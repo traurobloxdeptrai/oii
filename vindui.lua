@@ -623,6 +623,7 @@ local function GlassLayer(parent, radius, transparency)
 	prism.Size = UDim2.fromOffset(180, 180)
 	prism.ZIndex = Z.Glass
 	prism.Parent = glass
+	prism.Visible = false
 	Corner(prism, 90)
 	local prismGradient = Instance.new("UIGradient")
 	prismGradient.Color = ColorSequence.new({
@@ -644,6 +645,7 @@ local function GlassLayer(parent, radius, transparency)
 	prismEdge.Size = UDim2.fromOffset(116, 116)
 	prismEdge.ZIndex = Z.Glass
 	prismEdge.Parent = glass
+	prismEdge.Visible = false
 	Corner(prismEdge, 58)
 
 	local function updateRefraction(pointer)
@@ -2389,11 +2391,11 @@ function NullUI:CreateWindow(opts)
 	contentSurface.BackgroundColor3 = Color3.fromRGB(214, 230, 255)
 	contentSurface.BackgroundTransparency = 0.92
 	contentSurface.BorderSizePixel = 0
-	contentSurface.Position = UDim2.new(0, contentX, 0, 70)
-	contentSurface.Size = UDim2.new(1, -contentX - margin, 1, -(70 + margin))
+	contentSurface.Position = UDim2.new(0, contentX - 10, 0, 60)
+	contentSurface.Size = UDim2.new(1, -contentX - margin + 20, 1, -(70 + margin) + 20)
 	contentSurface.ZIndex = Z.Window
 	contentSurface.Parent = main
-	Corner(contentSurface, 24)
+	Corner(contentSurface, 30)
 	Stroke(contentSurface, Color3.fromRGB(255, 255, 255), 1, 0.84)
 	local contentGradient = Instance.new("UIGradient")
 	contentGradient.Color = ColorSequence.new(Color3.fromRGB(245, 250, 255), Color3.fromRGB(144, 183, 242))
