@@ -645,7 +645,6 @@ local function GlassLayer(parent, radius, transparency)
 	prismEdge.ZIndex = Z.Glass
 	prismEdge.Parent = glass
 	Corner(prismEdge, 58)
-	Stroke(prismEdge, Color3.fromRGB(255, 255, 255), 1, 0.72)
 
 	local function updateRefraction(pointer)
 		local size, position = parent.AbsoluteSize, parent.AbsolutePosition
