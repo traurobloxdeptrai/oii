@@ -12420,7 +12420,7 @@ function Tab:AddCardGrid(opts)
 		)
 	end
 	gridLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(updateGridCanvas)
-	task.defer(updateGridCanvas)
+	updateGridCanvas()
  
 	local SAFETY_MARGIN = 4
 	local currentColumns = 1
@@ -12435,7 +12435,7 @@ function Tab:AddCardGrid(opts)
 		gridLayout.CellSize = UDim2.fromOffset(math.max(1, cellW), CELL_H)
 	end
 	gridScroll:GetPropertyChangedSignal("AbsoluteSize"):Connect(relayoutGridColumns)
-	task.defer(relayoutGridColumns)
+	relayoutGridColumns()
  
 	if not showNativeScrollbar then
 		AddScrollbar(gridScroll)
@@ -12633,12 +12633,9 @@ function Tab:AddCardGrid(opts)
 		cellScale.Scale = 0.9
 		cellScale.Parent = cell
  
-		task.delay(animDelay or 0, function()
-			if not cell.Parent then return end
-			Tween(cell, { BackgroundTransparency = 0.94 }, 0.22, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
-			Tween(cellStroke, { Transparency = 0.9 }, 0.22, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
-			Tween(cellScale, { Scale = 1 }, 0.26, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
-		end)
+		Tween(cell, { BackgroundTransparency = 0.94 }, 0.22, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
+		Tween(cellStroke, { Transparency = 0.9 }, 0.22, Enum.EasingStyle.Quint, Enum.EasingDirection.Out)
+		Tween(cellScale, { Scale = 1 }, 0.26, Enum.EasingStyle.Back, Enum.EasingDirection.Out)
  
 		local cellPad = Instance.new("UIPadding")
 		cellPad.PaddingTop = UDim.new(0, cardPadding)
@@ -12993,7 +12990,7 @@ function Tab:AddCardGrid(opts)
 		clearGrid()
 		setStatus(opts.LoadingText or "Loading...", "loading")
 		resizeOuterEmpty()
-		task.spawn(function()
+		do
 			local ok, items, fetchErr = pcall(opts.Fetch, {
 				Query = currentQuery,
 				Sort = currentSort,
@@ -13030,12 +13027,8 @@ function Tab:AddCardGrid(opts)
 				buildCard(item, math.min(i - 1, 8) * 0.035)
 			end
  
-			task.spawn(function()
-				RunService.Heartbeat:Wait()
-				RunService.Heartbeat:Wait()
-				if myToken == loadToken then resizeOuterToGridContent() end
-			end)
-		end)
+			if myToken == loadToken then resizeOuterToGridContent() end
+		end
 	end
  
 	if searchBox then
@@ -13043,10 +13036,7 @@ function Tab:AddCardGrid(opts)
 		searchBox:GetPropertyChangedSignal("Text"):Connect(function()
 			currentQuery = searchBox.Text
 			debounceToken = debounceToken + 1
-			local myDebounce = debounceToken
-			task.delay(0.35, function()
-				if myDebounce == debounceToken then refresh() end
-			end)
+			refresh()
 		end)
 	end
  
@@ -13064,7 +13054,7 @@ function Tab:AddCardGrid(opts)
 	end
  
 	if opts.AutoLoad ~= false and opts.Fetch then
-		task.defer(refresh)
+		refresh()
 	end
  
 	return {
