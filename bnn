@@ -1,14 +1,14 @@
 
-if getgenv().Nousigi then 
-	if game.CoreGui:FindFirstChild("Nousigi Hub GUI") then
+if getgenv().RealKid then 
+	if game.CoreGui:FindFirstChild("RealKid Hub GUI") then
 		for i, v in ipairs(game.CoreGui:GetChildren()) do
-			if string.find(v.Name,  "Nousigi Hub") then
+			if string.find(v.Name,  "RealKid Hub") then
 				v:Destroy()
 			end
 		end
 	end
 end
-getgenv().Nousigi = true
+getgenv().RealKid = true
 getgenv().Config = true 
 
 local DisableAnimation = game.Players.LocalPlayer.PlayerGui:FindFirstChild('TouchGui')
@@ -99,7 +99,7 @@ end
 
 Library_Function.Gui = Instance.new('ScreenGui')
 Library_Function.Gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-Library_Function.Gui.Name = 'Nousigi Hub GUI'
+Library_Function.Gui.Name = 'RealKid Hub GUI'
 Library_Function.Gui.Enabled = false
 
 getgenv().ReadyForGuiLoaded = false
@@ -115,11 +115,11 @@ end)
 
 Library_Function.NotiGui = Instance.new('ScreenGui')
 Library_Function.NotiGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-Library_Function.NotiGui.Name = 'Nousigi Hub Notification'
+Library_Function.NotiGui.Name = 'RealKid Hub Notification'
 
 Library_Function.HideGui = Instance.new('ScreenGui')
 Library_Function.HideGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-Library_Function.HideGui.Name = 'Nousigi Hub Btn'
+Library_Function.HideGui.Name = 'RealKid Hub Btn'
 
 
 local btnHide = Instance.new('TextButton', Library_Function.HideGui) 
@@ -158,9 +158,9 @@ Library.ToggleUI = function()
 	TweenService:Create(btnHideFrame, TweenInfo.new(DisableAnimation and 0 or .25), {
 		BackgroundTransparency = getgenv().UIToggled and 0 or .25
 	}):Play()
-	if game.CoreGui:FindFirstChild("Nousigi Hub GUI") then
+	if game.CoreGui:FindFirstChild("RealKid Hub GUI") then
 		for a, b in ipairs(game.CoreGui:GetChildren()) do
-			if b.Name == "Nousigi Hub GUI" then
+			if b.Name == "RealKid Hub GUI" then
 				b.Enabled = getgenv().UIToggled
 			end
 		end
@@ -168,9 +168,9 @@ Library.ToggleUI = function()
 end
 
 Library.DestroyUI = function()
-	if game.CoreGui:FindFirstChild("Nousigi Hub GUI") then
+	if game.CoreGui:FindFirstChild("RealKid Hub GUI") then
 		for i, v in ipairs(game.CoreGui:GetChildren()) do
-			if string.find(v.Name,  "Nousigi Hub") then
+			if string.find(v.Name,  "RealKid Hub") then
 				v:Destroy()
 			end
 		end
